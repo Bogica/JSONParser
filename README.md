@@ -6,15 +6,15 @@ Example of JSON data that was parsed is available at
 
 Following data is displayed for each hour of the day:
 
-**date** - ("date_applied" in JSON) - Date as miliseconds since start of epoch (start of day). Timezone seems to be Netherlands standard (with daylight saving).
+- **date** - ("date_applied" in JSON) - Date as miliseconds since start of epoch (start of day). Timezone seems to be Netherlands standard (with daylight saving).
 
-**hour** - based on either "Order" or "Hour" field.
+- **hour** - based on either "Order" or "Hour" field.
 
-**net volume** - value used from "Net Volume" field.
+- **net volume** - value used from "Net Volume" field.
 
-**price** - value used from "Price" field
+- **price** - value used from "Price" field
 
-For JSON parsing, [Jackson]: https://en.wikipedia.org/wiki/Jackson_(API)
+For JSON parsing,[Jackson](https://en.wikipedia.org/wiki/Jackson_(API))
 
 # **Basic steps**
 
