@@ -14,7 +14,7 @@ Following data is displayed for each hour of the day:
 
 - **price** - value used from "Price" field
 
-For JSON parsing,[Jackson](https://en.wikipedia.org/wiki/Jackson_(API))
+For JSON parsing, [Jackson](https://en.wikipedia.org/wiki/Jackson_(API))
 
 # **Basic steps**
 
