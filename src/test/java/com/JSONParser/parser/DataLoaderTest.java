@@ -14,11 +14,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class DataLoaderTest {
 
     @Test
-    public void load() throws Exception {
+    public void parse() throws Exception {
 
         DataLoader sut = new DataLoader();
-        sut.url = getClass().getResource("data.json");
-        QuoteResponse response = sut.load();
+        QuoteResponse response = sut.parse();
         assertNotNull(response);
 
         assertNotNull(response.getQuote());

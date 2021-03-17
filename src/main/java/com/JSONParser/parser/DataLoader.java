@@ -4,33 +4,31 @@ package com.JSONParser.parser;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import model.QuoteResponse;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
-
-
+import org.springframework.stereotype.Component;
+import javax.annotation.PostConstruct;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
-@Service
+@Component
 public class DataLoader {
 
+    private static final String url = "src/test/resources/data/data.json";
 
-    @Value("${DataLoader.url}")
-    String urlStr;
-
-    URL url;
-
-    public void init() throws MalformedURLException {
-        if (this.url == null) {
-            this.url = new URL(urlStr);
+    @PostConstruct
+    public void init() {
+        QuoteResponse response = null;
+        try {
+            response = parse();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
-    public QuoteResponse load() throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        return mapper.readValue(url, QuoteResponse.class);
+    public QuoteResponse parse() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        return objectMapper.readValue(Files.readAllBytes(Paths.get(url)), QuoteResponse.class);
     }
-
 }
+
